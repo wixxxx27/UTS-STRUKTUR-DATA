@@ -1,28 +1,33 @@
+// KONVERSI NILAI BINER KE DESIMAL
+
 #include <iostream>
 using namespace std;
 
-// Struktur node untuk linked list
+// STRUKTUR NODE UNTUK LINKED LIST (TANPA CONSTRUCTOR)
 struct Node {
     int bit;
     Node* next;
-    Node(int b) : bit(b), next(NULL) {}
 };
 
-// Menambahkan node baru ke akhir linked list
+// MENAMBAHKAN NODE BARU KE AKHIR LINKED LIST
 void tambah(Node*& head, int bit) {
-    Node* baru = new Node(bit);
+    
+    Node* currentNode = new Node;
+    currentNode->bit = bit;
+    currentNode->next = NULL;
+
     if (!head) {
-        head = baru;
+        head = currentNode;
     } else {
         Node* node = head;
         while (node->next) {
             node = node->next;
         }
-        node->next = baru;
+        node->next = currentNode;
     }
 }
 
-// Menghitung nilai desimal dari linked list biner
+// MENGHITUNG NILAI DESIMAL DARI LINKED LIST BINER
 int konversiKeDesimal(Node* head) {
     int desimal = 0;
     int faktor = 1;
@@ -34,13 +39,13 @@ int konversiKeDesimal(Node* head) {
     return desimal;
 }
 
-// Input 1 byte (8 bit) dari user
+// INPUT 1 BYTE (8 BIT) DARI USER
 void inputBiner(Node*& head) {
-    cout << "\nMasukkan 8 bit dari bit ke-8 (MSB) ke bit ke-1 (LSB):\n";
+    cout << "\nMasukkan nilai 8 bit:\n";
     for (int i = 0; i < 8; i++) {
         int bit;
         do {
-            cout << "Bit ke-" << 8 - i << " (0 atau 1): ";
+            cout << "Bit ke-" << i + 1 << " (0 atau 1): ";
             cin >> bit;
         } while (bit != 0 && bit != 1);
         tambah(head, bit);
@@ -60,5 +65,4 @@ int main() {
 
     return 0;
 }
-
 

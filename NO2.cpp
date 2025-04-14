@@ -1,18 +1,18 @@
+// KONFERSI NILAI DESIMAL KE HEXADESIMAL
 
 #include <iostream>
-
 using namespace std;
 
+//VARIABEL GLOBAL
 const int MAX = 100;
 char stack[MAX];
 int top = -1;
 
-// Fungsi dasar stack
-void push(char c) {
+// FUNGSI STACK
+void push(char x) {
     if (top < MAX - 1) {
-        stack[++top] = c;
+        stack[++top] = x;
     } else {
-        cout << "Stack penuh!\n";
     }
 }
 
@@ -20,7 +20,6 @@ char pop() {
     if (top >= 0) {
         return stack[top--];
     } else {
-        cout << "Stack kosong!\n";
         return '\0';
     }
 }
@@ -29,19 +28,19 @@ bool isEmpty() {
     return top == -1;
 }
 
-// Konversi desimal ke heksadesimal
-void decimalToHex(int decimal) {
-    char hexDigits[] = "0123456789ABCDEF";
+// KONVERSI DESIMAL KE HEXADESIMAL
+void desimalkeHexa(int desimal) {
+    char hexaDigits[] = "0123456789ABCDEF";
 
-    if (decimal == 0) {
+    if (desimal == 0) {
         cout << "Hasil: 0" << endl;
         return;
     }
 
-    while (decimal > 0) {
-        int sisa = decimal % 16;
-        push(hexDigits[sisa]);
-        decimal /= 16;
+    while (desimal > 0) {
+        int sisa = desimal % 16;
+        push(hexaDigits[sisa]);
+        desimal /= 16;
     }
 
     cout << "Hasil: ";
@@ -52,7 +51,7 @@ void decimalToHex(int decimal) {
 }
 
 int main() {
-    // Tampilan judul di awal program
+    
     cout << "\n\n==================================\n";
     cout << " KONVERSI DESIMAL KE HEXADECIMAL\n";
     cout << "==================================\n";
@@ -60,6 +59,6 @@ int main() {
     int decimal;
     cout << "Masukkan bilangan desimal: ";
     cin >> decimal;
-    decimalToHex(decimal);
+    desimalkeHexa(decimal);
     return 0;
 }
